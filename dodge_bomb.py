@@ -53,13 +53,14 @@ def main():
         txt_rct=txt.get_rect()
         rightgm_img=pg.image.load("fig/8.png")
         leftgm_img=pg.image.load("fig/8.png")
-        righitgm_rct=rightgm_img.get_rect()
+        rightgm_rct=rightgm_img.get_rect()
         leftgm_rct=leftgm_img.get_rect()
         txt_rct.center=550,300
-        righitgm_rct.center=350,300
+        rightgm_rct.center=350,300
         leftgm_rct.center=750,300
         screen.fill((0,0,0))
-        screen.blit(rightgm_img,righitgm_rct)
+        screen.set_alpha(128)
+        screen.blit(rightgm_img,rightgm_rct)
         screen.blit(leftgm_img,leftgm_rct)
         screen.blit(txt,txt_rct)
         pg.display.update()
