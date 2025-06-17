@@ -1,6 +1,7 @@
 import os
 import random
 import sys
+import time
 import pygame as pg
 
 
@@ -43,6 +44,27 @@ def main():
     bb_rct.centerx=random.randint(0,WIDTH) #横座標用の乱数
     bb_rct.centery=random.randint(0,HEIGHT) #縦座標用の乱数
     vx, vy = +5, +5  # 爆弾の移動速度
+
+
+    def gmover(screen:pg.surface):     
+        enn= pg.Surface((WIDTH,HEIGHT))
+        fonto = pg.font.Font(None, 80)
+        txt = fonto.render("Game Over",True,(255,0,0))
+        txt_rct=txt.get_rect()
+        rightgm_img=pg.image.load("fig/8.png")
+        leftgm_img=pg.image.load("fig/8.png")
+        righitgm_rct=rightgm_img.get_rect()
+        leftgm_rct=leftgm_img.get_rect()
+        txt_rct.center=550,300
+        righitgm_rct.center=350,300
+        leftgm_rct.center=750,300
+        screen.fill((0,0,0))
+        screen.blit(rightgm_img,righitgm_rct)
+        screen.blit(leftgm_img,leftgm_rct)
+        screen.blit(txt,txt_rct)
+        pg.display.update()
+        time.sleep(5)
+
     clock = pg.time.Clock()
     tmr = 0
     while True:
@@ -51,6 +73,7 @@ def main():
                 return
         if kk_rct.colliderect(bb_rct):
             print("ゲームオーバー")
+            gmover(screen)
             return
         screen.blit(bg_img, [0, 0]) 
 
